@@ -1,0 +1,20 @@
+<div class="container" fxLayout="row" fxLayout.sm="column"  fxLayout.xs="column" fxLayoutAlign.xs="start center"
+  fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+
+  <mat-card class="visitor-card">
+    <mat-card-content>
+      <h3 class="visitor-card-heading"><b>e-Welcome</b></h3>		
+      <h4 class="visitor-card-heading ">Welcome to <b>TechFerry</b></h4>
+      <hr class="colored-line"><br>
+      <span> Please Enter your Mobile Number</span>
+      <form class="mobile-form" >
+        <mat-form-field class="full-width">
+          <input matInput formControlName="mobile-number"
+             placeholder="Mobile Number" value="" type="tel" pattern="[789][0-9]{9}"  autofocus="" >
+          </mat-form-field>
+        <button mat-raised-button color="background-primary" class="full-width">Next</button>
+      </form>
+      <h5 align="right">&copy; 2018 TechFerry</h5>			
+    </mat-card-content>
+  </mat-card>
+</div>

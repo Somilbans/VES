@@ -1,0 +1,47 @@
+<div class="container" fxLayout="row" fxLayout.sm="column"  fxLayout.xs="column" fxLayoutAlign.xs="start center"
+  fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+
+  <md-card class="visitor-card">
+    <md-card-content>
+ 
+      <hr class="colored-line"><br>
+      <span> Select who you want to meet ?
+        <!--
+        <p>Form value: {{ visitorContactForm.mobilenum}}</p>  <p> Is "myForm" valid? {{visitorContactForm.valid}} </p>
+        -->
+      </span>
+      <form novalidate [formGroup]="visitorContactForm" (ngSubmit)="onSubmit()"
+              >
+            
+          
+                <p>
+                    <md-select class="full-width" placeholder="Select" formControlName="contacttype">
+                        <md-option *ngFor="let ctype of contactType" [value]="ctype">
+                          {{ ctype }}
+                        </md-option>
+                    </md-select>
+                </p>
+              
+<!--
+              <p>
+                <md-input-container class="full-width" dividerColor="{{ formErrors.contacttype ? 'warn' : 'primary' }}">
+                    <textarea mdInput formControlName="contacttype" rows="12"  placeholder="Your Comment" required></textarea>
+                    <md-hint>
+                        <span [hidden]="!(formErrors.contacttype)">{{formErrors.contacttype}}</span>
+                    </md-hint>
+                </md-input-container>
+            </p>
+          -->        
+            <button type="submit" md-button class="full-width background-primary text-floral-white" [disabled]="visitorContactForm.invalid">Submit</button>
+          </form>
+
+
+
+
+
+    <h5 align="right">&copy; 2018 TechFerry</h5>			
+  </md-card-content>
+  </md-card>
+
+</div>       
+          

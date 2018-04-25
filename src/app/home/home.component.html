@@ -3,10 +3,14 @@
 
   <md-card class="visitor-card" >
     <md-card-content>
-      <h3 class="visitor-card-heading"><b>e-Welcome</b></h3>		
+      <h3 class="visitor-card-heading"><b>e-Welcome</b>
+<!--        <span><img src="{{BaseURL +leader.image}}" height="60" width="150" alt="{{leader.name}}"></span>
+-->   </h3>		
       <h4 class="visitor-card-heading ">Welcome to <b>TechFerry</b></h4>
       <hr class="colored-line"><br>
       <span> Please Enter your Mobile Number
+      
+        <!-- code for checking form values-->
         <!--
         <p>Form value: {{ visitorForm.value.mobilenum }}</p>  <p> Is "myForm" valid? {{visitorForm.valid}} </p>
         -->
@@ -28,22 +32,22 @@
           <!--      
         <a md-button routerLink="/contact"  routerLinkActive="active" class="background-primary text-floral-white full-width" [disabled]="visitorForm.invalid">Next</a>
           -->
-           <button type="submit"  md-button class="background-primary text-floral-white full-width"  [disabled]="visitorForm.invalid"  > Next</button>
+            <button type="submit"  md-button class="background-primary text-floral-white full-width"  [disabled]="visitorForm.invalid"  > Next</button>
       </form>
-<!--
-      <div [hidden]="!submitted">
+
+      <!--
+        <div [hidden]="!submitted">
         <h4>Submitting Form</h4>
         <md-spinner></md-spinner>
-      </div>
+        </div>
 
         <div *ngIf="mobilenocopy && !submitted" >
           <h3>Your Submission:</h3>
           <p>First Name: {{ mobilenocopy.mobilenum }}</p>
-      </div>
-    -->  
+        </div>
+    -->
       <h5 align="right">&copy; 2018 TechFerry</h5>			
     </md-card-content>
-  
   </md-card>
 
 </div>

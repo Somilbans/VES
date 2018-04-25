@@ -3,38 +3,50 @@
     {
       "id": 0,
       "name": "Peter Pan",
-      "image": "images/alberto.png",
-      "designation": "Chief Epicurious Officer",
-      "abbr": "CEO",
-      "featured": "false",
-      "description": "Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother's wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket, was his first inspiration to create the fusion cuisines for which The Frying Pan became well known. He brings his zeal for fusion cuisines to this restaurant, pioneering cross-cultural culinary connections."
+      "image": "images/logo.png",
+      "featured": "true"
     }
   ],
-  "visitor": [
+  "visitors": [
     {
       "mobilenum": "4444444444",
-      "contactPersons": [],
+      "contactPersons": [
+        {
+          "date": "2018-04-23T10:54:06.969Z",
+          "contacttype": "Marketing Manager"
+        }
+      ],
       "id": 1
     },
     {
       "mobilenum": "7417763561",
       "contactPersons": [
         {
-          "date": "2018-04-18T09:34:21.091Z",
-          "contacttype": "Marketing Manager"
+          "date": "2018-04-23T10:57:35.398Z",
+          "contacttype": "Admin"
         }
       ],
       "id": 2
     },
     {
-      "mobilenum": "7417763561",
+      "mobilenum": "7417635615",
       "contactPersons": [
         {
-          "date": "2018-04-18T09:34:46.022Z",
-          "contacttype": "HR"
+          "date": "2018-04-23T10:58:00.051Z",
+          "contacttype": "Marketing Manager"
         }
       ],
       "id": 3
+    },
+    {
+      "mobilenum": "4444444444",
+      "contactPersons": [
+        {
+          "date": "2018-04-23T11:52:17.980Z",
+          "contacttype": "Marketing Manager"
+        }
+      ],
+      "id": 4
     }
   ]
 }

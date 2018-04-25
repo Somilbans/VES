@@ -7,10 +7,8 @@ import {HeaderComponent} from '../header/header.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
-   { path: 'home/:mobilenum', component: ContactComponent },
-  //{ path: '/contact', component: ContactComponent },
-     
-  { path: 'thankyou', component: ThankyouComponent },
+    { path: 'home/:mobilenum/contactPersons', component: ContactComponent },
+    { path: 'thankyou', component: ThankyouComponent },
     { path: 'header', component: HeaderComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
   ];  

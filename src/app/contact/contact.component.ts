@@ -17,41 +17,28 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ContactComponent implements OnInit {
  
- 
   visitorContactForm: FormGroup;
 
-  
-  Visitors: Visitor[];
-  visitor:Visitor;
-  visitorCopy= null;
-  visitorMNos: number[];
+//  Visitors: Visitor[];
   errMess: string;
-  visitorContact: Contact;
+  
   contactType = ContactType;
-   
 
- // contactType = ContactType;
-  /**
- formErrors = {
-  contacttype: ''
-};
+  visitorMNos: number[];
+  visitor:Visitor;
+  visitorCopy:Visitor;
+  visitorContact: Contact;
+  visitorContactCopy: Contact;
 
-validationMessages = {
- contacttype: {
-    required: 'Comment is required.'
-  }
-};
-  */
-
+  contacttype: string;
 
   constructor(private route: ActivatedRoute,private fb: FormBuilder, private visitorService: VisitorService,@Inject('BaseURL') private BaseURL) {
-    this.createForm();
-    this.visitorContact= new Contact();
+      this.createForm();
    }
 
   ngOnInit() {
    // this.visitorService.getVisitors().subscribe(visitors => this.Visitors = visitors,errmess => this.errMess = <any>errmess);
-
+  
     this.visitorService.getVisitorsMobileNos().subscribe(visitorNos => this.visitorMNos = visitorNos);
     this.route.params.switchMap((params: Params) => {  return this.visitorService.getM(+params['mobilenum']);})
         .subscribe(visitor => {this.visitor = visitor; this.visitorCopy=visitor; },errmess => this.errMess = <any>errmess );
@@ -61,14 +48,14 @@ validationMessages = {
   createForm() {
     this.visitorContactForm = this.fb.group({
   contacttype: [null, [Validators.required]]
-  
-});
-}
+  });
+  }
 
 
 
-onSubmit() {
-  
+  onSubmit() {
+
+  /** push code
   if(this.visitorContactForm.value){
     this.visitorContact.date = new Date().toISOString();
     this.visitorContact.contacttype = this.visitorContactForm.value.contacttype;
@@ -81,8 +68,24 @@ onSubmit() {
   this.visitorContactForm.reset({
     contacttype: ''
   });
-  window.location.assign("/thankyou")
+  window.location.assign("/thankyou");
+*/
+    if(this.visitorContactForm.value){
 
- }
+      this.visitorContact = this.visitorContactForm.value;
+      this.visitorContact.contacttype= this.visitorContact.contacttype;
+      console.log(this.visitorContact);
+      this.visitorService.submitVisitorscontactPersons(this.visitorContactForm.value,this.visitor)
+        .subscribe(visitor => {this.visitorCopy = visitor;
+      window.location.assign("/thankyou")
+      console.log(this.visitorContactForm.value);
+      this.visitorContactForm.reset({
+          contacttype: ''
+      });
+         },errmess => {
+                     }
+          );
+    }
+  }
 
 }

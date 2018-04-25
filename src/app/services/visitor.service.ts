@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Visitor } from '../shared/visitor';
 import { Observable } from 'rxjs/Observable';
+import {Contact} from '../shared/contact';
 
 import { Http, Response } from '@angular/http';
 import { baseURL } from '../shared/baseurl';
@@ -18,52 +19,48 @@ export class VisitorService {
   constructor(private restangular: Restangular,
     private processHTTPMsgService: ProcessHttpmsgService) { }
     
+    // function for submitting visitors data {mobileno}
     submitVisitors(visitor: Visitor): Observable<Visitor> {
       if (visitor) {
-        return this.restangular.all('visitor').post(visitor);
+        return this.restangular.all('visitors').post(visitor);
       }
     }
 
-    
-    getVisitors(): Observable<Visitor[]> {
-                      return this.restangular.all('visitor').getList();
+    //// function for submitting visitors data {contact}
+    submitVisitorscontactPersons(contact:Contact,visitor: Visitor): Observable<Visitor> {
+      if (visitor) {
+        return this.restangular.all('visitors/'+visitor.mobilenum+'/contactPersons').post(contact);
+      }
+    }
 
+    //function for get all visitor data
+    getVisitors(): Observable<Visitor[]> {
+                      return this.restangular.all('visitors').getList();
     }
   
     getVisitorId(id: number): Observable<Visitor> {
-      return  this.restangular.one('visitor',id).get();
+      return  this.restangular.one('visitors',id).get();
        }
   
-   
-  
-    getVisitorsIds(): Observable<number[]> {
-     
-     
-      return this.getVisitors()
+     getVisitorsIds(): Observable<number[]> {
+       return this.getVisitors()
         .map(visitors => { return visitors.map(visitor => visitor.id) });
 //        .catch(error => { return error; } );
-
     }
 
     getVisitorMobileNo(mobile: number): Observable<Visitor> {
-      return  this.restangular.one('visitor',mobile).get();
+      return  this.restangular.one('visitors',mobile).get();
        }
  
-  
     getVisitorsMobileNos(): Observable<number[]> {
-     
-     
-      return this.getVisitors()
+        return this.getVisitors()
         .map(visitors => { return visitors.map(visitor => visitor.mobilenum) });
 //        .catch(error => { return error; } );
 
     }
 
+
     getM(mobile: number): Observable<Visitor> {
-      return this.restangular.all('visitor').getList({ mobilenum: mobile }).map(visitor => visitor[visitor.length-1]);
+      return this.restangular.all('visitors').getList({ mobilenum: mobile }).map(visitor => visitor[visitor.length-1]);
       }   
-
-
-     
-
 }

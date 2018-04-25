@@ -3,12 +3,13 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {Visitor} from '../shared/visitor';
-
+import {Leader} from '../shared/leader';
+ 
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 import { VisitorService } from '../services/visitor.service';
-
+import {LeaderService} from '../services/leader.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,9 @@ import { VisitorService } from '../services/visitor.service';
 
 export class HomeComponent implements OnInit {
   
+  leader:Leader;
+  leaderErrMess: string;
+
   visitorForm: FormGroup;
   visitor:Visitor;
   visitorcopy: Visitor;
@@ -37,7 +41,9 @@ export class HomeComponent implements OnInit {
     }, 
   };
 
-  constructor(private visitorService: VisitorService,private fb: FormBuilder, @Inject('BaseURL') private BaseURL) {
+  constructor(private visitorService: VisitorService, private leaderService: LeaderService,private fb: FormBuilder, @Inject('BaseURL') private BaseURL) {
+    
+  //this.leaderService.getFeaturedLeader().subscribe(leader => this.leader =leader, errmess => this.leaderErrMess = <any>errmess);
     this.createForm();
   }
 
@@ -46,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   createForm() {
     this.visitorForm = this.fb.group({
-    mobilenum: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern] ]
+        mobilenum: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern] ]
     });
     this.visitorForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
@@ -99,7 +105,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => { this.submitted=false; }, 2000);
   
     this.visitorService.submitVisitors(this.visitorForm.value).subscribe(visitor => {this.visitorcopy = visitor;
-      window.location.assign("/home/"+this.mobilenumber);
+      window.location.assign("/home/"+this.mobilenumber+"/contactPersons");
       this.reset(1000);
        },errmess => {
                             this.visitor = <any>errmess;

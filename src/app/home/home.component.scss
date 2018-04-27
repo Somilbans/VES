@@ -4,11 +4,13 @@
     margin-right: auto;
     }
 
-.visitor-card-heading {
-  text-align:center;
-  font-size: 30px;
-}
-
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 70%;
+    
+  }
 
 .colored-line {
   height: 7px;
@@ -33,3 +35,11 @@
         border-radius: 2px;
 }
     
+
+.mat-card {
+  transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+  display: block;
+  position: relative;
+  padding: 15px;
+  border-radius: 2px;
+}

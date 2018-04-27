@@ -1,26 +1,37 @@
 <div class="container" fxLayout="row" fxLayout.sm="column"  fxLayout.xs="column" fxLayoutAlign.xs="start center"
   fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
 
-  <md-card class="visitor-card" >
+  <md-card class="visitor-card">
     <md-card-content>
-      <h3 class="visitor-card-heading"><b>e-Welcome</b>
-<!--        <span><img src="{{BaseURL +leader.image}}" height="60" width="150" alt="{{leader.name}}"></span>
--->   </h3>		
-      <h4 class="visitor-card-heading ">Welcome to <b>TechFerry</b></h4>
+        <div class="clearfix">
+        <img src="{{BaseURL +leader[0].image}}" style="float: right;" height="36" width="37" alt="{{leader[0].name}}">
+        </div>
+      <br>
+      <br>
+    
+      <div  class="center"  >
+
+          <img src="{{BaseURL +leader[1].image}}" style="float: left;" height="86" width="76" alt="{{leader[1].name}}">
+          <span><br><h2>e-Welcome</h2></span>
+      </div>
+
+      <div style="clear: both;">
+      </div>
+      <h2 style="text-align:center;">Welcome to <b>TechFerry</b></h2>
       <hr class="colored-line"><br>
-      <span> Please Enter your Mobile Number
       
         <!-- code for checking form values-->
         <!--
         <p>Form value: {{ visitorForm.value.mobilenum }}</p>  <p> Is "myForm" valid? {{visitorForm.valid}} </p>
         -->
-      </span>
+      
       <form novalidate [formGroup]="visitorForm" (ngSubmit)="onSubmit()"
         *ngIf="!mobilinocopy && !submitted">
              <p>
+                <label for="mobilenum">Enter your Mobile Number</label>
                 <md-input-container class="full-width"
                         dividerColor="{{(formErrors.mobilenum) ? 'warn' : 'primary'}}">
-                  <input mdInput formControlName="mobilenum" placeholder="Mobile Number" type="text" pattern="[0-9]*" required maxlength="10">
+                  <input mdInput formControlName="mobilenum" id="mobilenum" placeholder="Mobile Number" type="text" pattern="[0-9]*" required maxlength="10">
                   <md-hint>
                       <span [hidden]="!(formErrors.mobilenum)">
                           {{formErrors.mobilenum}}
@@ -28,6 +39,23 @@
                   </md-hint>
                 </md-input-container>
               </p>
+
+
+              <p>
+                  <label for="name">Enter your Name(Optional)</label>
+                
+                  <md-input-container class="full-width"
+                      dividerColor="{{(formErrors.name) ? 'warn' : 'primary'}}">
+                      <input mdInput formControlName="name" id="name" placeholder="Name" type="text" >
+                      <md-hint>
+                          <span [hidden]="!(formErrors.name)">
+                          {{formErrors.name}}</span>
+                      </md-hint>
+                  </md-input-container>
+            
+              </p>
+              
+           
               <br>
           <!--      
         <a md-button routerLink="/contact"  routerLinkActive="active" class="background-primary text-floral-white full-width" [disabled]="visitorForm.invalid">Next</a>

@@ -12,7 +12,6 @@ import 'rxjs/add/operator/catch';
 
 import { RestangularModule, Restangular } from 'ngx-restangular';
 
-
 @Injectable()
 export class VisitorService {
 
@@ -22,6 +21,7 @@ export class VisitorService {
     // function for submitting visitors data {mobileno}
     submitVisitors(visitor: Visitor): Observable<Visitor> {
       if (visitor) {
+     
         return this.restangular.all('visitors').post(visitor);
       }
     }
@@ -49,6 +49,7 @@ export class VisitorService {
     }
 
     getVisitorMobileNo(mobile: number): Observable<Visitor> {
+      
       return  this.restangular.one('visitors',mobile).get();
        }
  
@@ -59,7 +60,16 @@ export class VisitorService {
 
     }
 
+    checkVisitor(mobile: number): Observable<Visitor> {
+      
+      return  this.restangular.one('visitors',mobile).get();
+      }   
 
+    updateVisitorName(mobile:number, name:string) {
+      var elem=this.restangular.one('visitors',mobile);
+      elem.name=name;
+      elem.put();
+          }   
     getM(mobile: number): Observable<Visitor> {
       return this.restangular.all('visitors').getList({ mobilenum: mobile }).map(visitor => visitor[visitor.length-1]);
       }   

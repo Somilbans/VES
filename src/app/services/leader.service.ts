@@ -32,7 +32,7 @@ export class LeaderService {
         }
 
     getFeaturedLeader(): Observable<Leader> {
-        return this.restangular.all('leaders').getList({ featured: true }).map(leaders => leaders[0]);
+        return this.restangular.all('leaders').getList({ featured: true }).map(leaders => leaders);
         }   
  
        //code for services using http 
